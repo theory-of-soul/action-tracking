@@ -1,22 +1,39 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {View} from 'react-native';
 import {connect} from 'react-redux';
 
 import AddNewAction from './AddNewAction';
 import ActionList from './ActionList';
+import CreateButton from './CreateButton';
+import AddAmountDayTracking from './AddAmountDayTracking';
 
-type Props = {};
+import { Container, Content, Footer, FooterTab} from 'native-base';
 
-class HabitTrackerCreator extends Component<Props> {
+class HabitTrackerCreator extends React.Component {
 
-  render() {
-    return (
-      <View>
-        <AddNewAction />
-        <ActionList />
-      </View>
-    );
-  }
+    static navigationOptions = {
+      title: 'Создание',
+    };
+
+    render() {
+
+      return (
+        <Container>
+          <Content>
+            <AddAmountDayTracking />
+            <AddNewAction />
+            <ActionList />
+          </Content>
+          <Footer>
+            <FooterTab>
+              <CreateButton onPress={() => {
+                this.props.navigation.navigate('Table');
+              }}/>
+            </FooterTab>
+          </Footer>
+        </Container>
+      );
+    }
 }
 
 export default connect()(HabitTrackerCreator)

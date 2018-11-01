@@ -1,25 +1,42 @@
 import React from 'react';
-import {View, TextInput, Text, ScrollView} from 'react-native';
+import {View, TextInput, ScrollView, ListView} from 'react-native';
 import {connect} from 'react-redux';
 import type {ApplicationState} from "../../../Reducers/ApplicationState";
+import {Button, List, ListItem, Icon, Text} from 'native-base';
 
-function ActionList(props) {
+class ActionList extends React.Component {
 
-  console.log('ActionList', props);
+  constructor(props) {
+    super(props);
+    this.ds = new ListView.DataSource({ rowHasChanged: (r1, r2) => r1 !== r2 });
+  }
 
-  return (
-    <ScrollView>
-      {
-        props.actions.map((action, index) => {
+  deleteRow(secId, rowId, rowMap) {
+    rowMap[`${secId}${rowId}`].props.closeRow();
+    this.props.dispatch({type: 'REMOVE_ACTION', id: rowId})
+  }
+
+  render() {
+
+    return (
+      <List
+        rightOpenValue={-75}
+        dataSource={this.ds.cloneWithRows(this.props.actions)}
+        renderRow={(data) => {
           return (
-            <View key={index}>
-              <Text>{action.text}</Text>
-            </View>
+            <ListItem style={{padding: 20}}>
+              <Text style={{fontSize: 16}}>{data.text}</Text>
+            </ListItem>
           )
-        })
-      }
-    </ScrollView>
-  );
+        }}
+        renderRightHiddenRow={(data, secId, rowId, rowMap) =>
+          <Button full danger onPress={_ => this.deleteRow(secId, rowId, rowMap)}>
+            <Icon active name="trash" />
+          </Button>
+        }
+      />
+    );
+  }
 }
 
 const mapStateToProps = (state: ApplicationState) => ({

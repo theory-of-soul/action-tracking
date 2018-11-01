@@ -1,28 +1,37 @@
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View, TextInput, SafeAreaView} from 'react-native';
-import HabitTrackerCreator from './src/View/HabitTracker/HabitTrackerCreator/HabitTrackerCreator'
 
+import {Provider, connect} from 'react-redux';
 import {createStore, applyMiddleware} from 'redux';
-import {Provider} from 'react-redux';
 import thunk from 'redux-thunk';
 import rootReducer from './src/Reducers/index';
 
-const store = createStore(
-  rootReducer,
-  applyMiddleware(thunk)
+import {AppNavigator} from "./src/Navigation/appNavigator";
+import {createReactNavigationReduxMiddleware, reduxifyNavigator} from "react-navigation-redux-helpers";
+
+const middleware = createReactNavigationReduxMiddleware(
+  "root",
+  state => state.nav,
 );
 
-type Props = {};
-class App extends Component<Props> {
+const AppWithNavigation = reduxifyNavigator(AppNavigator, "root");
+const mapStateToProps = (state) => ({
+  state: state.nav,
+});
+
+const AppWithNavigationState = connect(mapStateToProps)(AppWithNavigation);
+
+const store = createStore(
+  rootReducer,
+  applyMiddleware(thunk, middleware)
+);
+
+class App extends Component<{}> {
   render() {
 
     return (
       <Provider store={store}>
-        <SafeAreaView style={{flexDirection: 'column'}}>
-          <View style={{flex: 0,  alignSelf: 'stretch', backgroundColor: '#eee'}}>
-            <HabitTrackerCreator />
-          </View>
-        </SafeAreaView>
+        <AppWithNavigationState />
       </Provider>
     );
   }
