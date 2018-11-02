@@ -5,5 +5,5 @@ import {createNavigationReducer} from 'react-navigation-redux-helpers';
 
 export default combineReducers({
   nav: createNavigationReducer(AppNavigator),
-  habits
-})
+  habits,
+});

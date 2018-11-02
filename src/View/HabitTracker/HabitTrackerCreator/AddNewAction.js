@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, TextInput, TouchableOpacity} from 'react-native';
+import {View} from 'react-native';
 import {connect} from 'react-redux';
 import {ApplicationState} from "../../../Reducers/ApplicationState";
 import {Button, Input, Item, Label, Text} from 'native-base';

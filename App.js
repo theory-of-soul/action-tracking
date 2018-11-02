@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View, TextInput, SafeAreaView} from 'react-native';
 
 import {Provider, connect} from 'react-redux';
 import {createStore, applyMiddleware} from 'redux';

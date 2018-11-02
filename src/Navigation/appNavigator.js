@@ -1,6 +1,6 @@
-import {createStackNavigator} from "react-navigation";
-import HabitTrackerTable from "../View/HabitTracker/HabitTrackerTable/HabitTrackerTable";
-import HabitTrackerCreator from "../View/HabitTracker/HabitTrackerCreator/HabitTrackerCreator";
+import {createStackNavigator} from 'react-navigation';
+import HabitTrackerTable from '../View/HabitTracker/HabitTrackerTable/HabitTrackerTable';
+import HabitTrackerCreator from '../View/HabitTracker/HabitTrackerCreator/HabitTrackerCreator';
 
 export const AppNavigator = createStackNavigator(
   {
@@ -9,5 +9,5 @@ export const AppNavigator = createStackNavigator(
   },
   {
     initialRouteName: 'Create',
-  }
+  },
 );

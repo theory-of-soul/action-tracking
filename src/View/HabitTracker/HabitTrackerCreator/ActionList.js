@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, TextInput, ScrollView, ListView} from 'react-native';
+import {ListView} from 'react-native';
 import {connect} from 'react-redux';
 import type {ApplicationState} from "../../../Reducers/ApplicationState";
 import {Button, List, ListItem, Icon, Text} from 'native-base';
