@@ -1,9 +1,8 @@
-import type {Action} from '../Actions/types';
 import * as Immutable from 'immutable';
 
 export type State = Immutable.Map;
 
-export function habits(state: State = Immutable.Map(), action: Action): State {
+export default function habits(state: State = Immutable.Map(), action) {
   const habitActions = state.get('actions', []);
 
   switch (action.type) {
@@ -24,11 +23,10 @@ export function habits(state: State = Immutable.Map(), action: Action): State {
         }),
       });
     case 'REMOVE_ACTION':
-      const newActions = state.get('actions', []);
-      newActions.splice(parseInt(action.id), 1);
+      habitActions.splice(parseInt(action.id), 1);
 
       return state.merge({
-        actions: [...newActions],
+        actions: [...habitActions],
       });
     default:
       return state;

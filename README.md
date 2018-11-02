@@ -1,6 +1,7 @@
 - SOLID https://habr.com/company/ruvds/blog/428079/ 
 - lint https://habr.com/company/ruvds/blog/428173/ 
 - checklist front https://habr.com/company/netologyru/blog/347740/
+- airbnb https://github.com/airbnb/javascript
 
 ? 
 - react-start-kit https://github.com/adeelibr/react-starter-kit

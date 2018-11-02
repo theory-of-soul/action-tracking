@@ -5,7 +5,9 @@
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "test": "jest",
-    "prettier": "prettier --write src/**/*.js"
+    "prettier": "prettier --write src/**/*.js",
+    "lint": "eslint --debug src/",
+    "lint:write": "eslint --debug src/ --fix"
   },
   "dependencies": {
     "immutable": "^4.0.0-rc.12",
@@ -19,7 +21,17 @@
     "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
+    "babel-eslint": "^10.0.1",
     "babel-jest": "23.6.0",
+    "eslint": "^5.8.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-jest-enzyme": "^7.0.0",
+    "eslint-plugin-babel": "^5.2.1",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jest": "^21.26.2",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-prettier": "^3.0.0",
+    "eslint-plugin-react": "^7.11.1",
     "jest": "23.6.0",
     "metro-react-native-babel-preset": "0.49.0",
     "prettier": "^1.14.3",

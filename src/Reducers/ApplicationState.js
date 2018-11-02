@@ -1,5 +1,5 @@
 import * as Immutable from 'immutable';
-import {Reducer} from 'redux/index';
+import {Reducer} from 'redux';
 import {ReducerState} from 'react-navigation-redux-helpers';
 
 export type ApplicationState = {

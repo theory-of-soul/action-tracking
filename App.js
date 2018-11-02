@@ -5,7 +5,7 @@ import {createStore, applyMiddleware} from 'redux';
 import thunk from 'redux-thunk';
 import rootReducer from './src/Reducers/index';
 
-import {AppNavigator} from "./src/Navigation/appNavigator";
+import AppNavigator from "./src/Navigation/appNavigator";
 import {createReactNavigationReduxMiddleware, reduxifyNavigator} from "react-navigation-redux-helpers";
 
 const middleware = createReactNavigationReduxMiddleware(

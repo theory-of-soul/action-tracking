@@ -1,12 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {Container, Content, Footer, FooterTab, Text} from 'native-base';
 import ActionList from '../HabitTrackerCreator/ActionList';
 
-import { Container, Content, Footer, FooterTab, Text} from 'native-base';
-
-
 class HabitTrackerTable extends React.Component {
-
   static navigationOptions = {
     title: 'Трэкер',
   };
@@ -19,13 +16,11 @@ class HabitTrackerTable extends React.Component {
           <ActionList />
         </Content>
         <Footer>
-          <FooterTab>
-
-          </FooterTab>
+          <FooterTab />
         </Footer>
       </Container>
     );
   }
 }
 
-export default connect()(HabitTrackerTable)
+export default connect()(HabitTrackerTable);

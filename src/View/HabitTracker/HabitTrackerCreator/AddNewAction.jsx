@@ -1,11 +1,10 @@
 import React from 'react';
 import {View} from 'react-native';
 import {connect} from 'react-redux';
-import {ApplicationState} from "../../../Reducers/ApplicationState";
 import {Button, Input, Item, Label, Text} from 'native-base';
+import {ApplicationState} from '../../../Reducers/ApplicationState';
 
 class AddNewAction extends React.Component {
-
   render() {
     return (
       <View>
@@ -13,21 +12,25 @@ class AddNewAction extends React.Component {
           <Item floatingLabel>
             <Label>Какие действия будем отслеживать?</Label>
             <Input
-              autoFocus={true}
+              autoFocus
               style={{fontSize: 18}}
-              onChangeText={(text) => {
-                this.props.dispatch({type: 'CHANGE_ADD_ACTION_INPUT', text: text})
+              onChangeText={text => {
+                this.props.dispatch({type: 'CHANGE_ADD_ACTION_INPUT', text});
               }}
               value={this.props.inputValue}
             />
           </Item>
         </View>
         <View style={{padding: 10}}>
-          <Button block success onPress={() => {
-            if (this.props.inputValue.trim() !== '') {
-              this.props.dispatch({type: 'ADD_ACTION', text: this.props.inputValue})
-            }
-          }}>
+          <Button
+            block
+            success
+            onPress={() => {
+              if (this.props.inputValue.trim() !== '') {
+                this.props.dispatch({type: 'ADD_ACTION', text: this.props.inputValue});
+              }
+            }}
+          >
             <Text>Добавить</Text>
           </Button>
         </View>
@@ -37,9 +40,9 @@ class AddNewAction extends React.Component {
 }
 
 const mapStateToProps = (state: ApplicationState) => {
-  return ({
-    inputValue: state.habits.get('addActionInputValue', '')
-  })
+  return {
+    inputValue: state.habits.get('addActionInputValue', ''),
+  };
 };
 
-export default connect(mapStateToProps)(AddNewAction)
+export default connect(mapStateToProps)(AddNewAction);
